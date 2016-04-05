@@ -1,0 +1,2 @@
+une fois l'appli lancé sur un tomcat allez à l'url suivante:
+http://localhost:8080/demospring3mvcformulaire/

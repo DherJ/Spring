@@ -26,6 +26,5 @@
     <module>monappli-domaine</module>
     <module>monappli-dao</module>
     <module>monappli-web</module>
-    <module>monappli-service</module>
   </modules>
 </project>

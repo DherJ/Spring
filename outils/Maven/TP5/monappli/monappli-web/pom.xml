@@ -7,6 +7,8 @@
     <artifactId>monappli</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
+
+
   <groupId>com.objis.demomaven</groupId>
   <artifactId>monappli-web</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -15,30 +17,13 @@
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
-		<groupId>com.objis.demomaven</groupId>
-		<artifactId>monappli-domaine</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</dependency>
-    <dependency>
-		<groupId>com.objis.demomaven</groupId>
-		<artifactId>monappli-service</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</dependency>
-	<dependency>
-	  <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-servlet_3.0_spec</artifactId>
-      <version>1.0</version>
-	  <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jsp_2.2_spec</artifactId>
-      <version>1.2</version>
-	  <scope>provided</scope>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
     <finalName>monappli-web</finalName>
   </build>
-
 </project>
