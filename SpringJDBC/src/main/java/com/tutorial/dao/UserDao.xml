@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tutorial.dao.UserDao">
+
+	<resultMap type="com.tutorial.model.User" id="User_ResultMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="firstName" column="firstname"/>
+		<result property="email" column="email"/>
+		<result property="age" column="age"/>
+	</resultMap>
+
+	<select id="getUserById" resultMap="User_ResultMap">
+		SELECT id, name, firstname, email, age
+		FROM usertable
+		WHERE id = #{id}
+	</select>
+	
+	<select id="listUsers"
+			resultType="com.tutorial.model.User" resultMap="User_ResultMap">
+		SELECT
+			id,
+			name,
+			firstname,
+			email,
+			age
+		FROM usertable
+	</select>
+	
+	<insert id="insertUser"
+			useGeneratedKeys="true">
+		INSERT INTO usertable (
+			id,
+			name,
+			firstname,
+			email,
+			age
+		)
+		VALUES (
+			#{id},
+			#{name},
+			#{firstName},
+			#{email},
+			#{age}
+		)
+	</insert>
+	
+	<update id="updateUser"
+			parameterType="com.tutorial.model.User">
+		UPDATE usertable
+		SET	id = #{id}, name = #{name}, firstname = #{firstName}, email = #{email}, age = #{age}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteUser">
+		DELETE FROM usertable
+		WHERE name = #{name} and firstname =#{firstName}
+		
+	</delete>
+
+</mapper>
