@@ -25,6 +25,7 @@
 						<td> ${user.firstName} </td>
 						<td> ${user.email} </td>
 						<td> ${user.age} </td>
+						<td> <a href ="http://localhost:8080/resultDeleteForm/"> Delete </a>
 					</tr>
 				</c:forEach>
 			</tbody>

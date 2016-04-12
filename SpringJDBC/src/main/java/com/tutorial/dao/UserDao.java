@@ -22,7 +22,7 @@ public interface UserDao {
 	 */
 	public List<User> listUsers();
 	
-	public void deleteUser(@Param("name")String name, @Param("firstName") String firstName);
+	public void deleteUser(@Param("name")User user);
 
 	/**
 	 * This is the method to be used to delete a record from the User table

@@ -51,10 +51,10 @@ public class UserController {
 		return "resultAdd";
 	}
 	
-	@RequestMapping(value ="resultDeleteForm", method = RequestMethod.POST)
+	@RequestMapping(value ="resultDeleteForm", method = RequestMethod.GET)
 	public String removeStudent(@ModelAttribute("User") User user){
-		userService.deleteUser(user.getName(), user.getFirstName());
-		return "resultDeleteForm";
+		userService.deleteUser(user);
+		return "listUser";
 	}
 
 	@RequestMapping(value = "bdd", method = RequestMethod.GET)

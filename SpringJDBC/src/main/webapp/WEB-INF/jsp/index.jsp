@@ -14,7 +14,5 @@
 		<br/>
 		<a href="http://localhost:8080/deleteUserForm"> RemoveUser </a>
 		<br/>
-		<br/>
-		<a href="http://localhost:8080/bdd"> BDD </a>
 	</body>
 </html>

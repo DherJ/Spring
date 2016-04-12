@@ -48,8 +48,8 @@ public class UserServiceImpl implements UserService {
 		return userDao.listUsers();
 	}
 	
-	public void deleteUser(String name, String firstName){
-		userDao.deleteUser(name,firstName);
+	public void deleteUser(User user){
+		userDao.deleteUser(user);
 	}
 	//
 	// public User getUserById(int id) {

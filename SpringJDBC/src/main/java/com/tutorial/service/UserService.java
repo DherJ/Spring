@@ -19,6 +19,6 @@ public interface UserService {
 	
 	public void insertUser(int id, String name, String firstname, String email, int age );
 	
-	public void deleteUser(String name, String firstname);
+	public void deleteUser(User user);
 	
 }
