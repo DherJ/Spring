@@ -55,7 +55,7 @@ public class UserController {
 		validator.validate(user, result);
 		
 		if (result.hasErrors()){
-			return "index";
+			return "addUser";
 
 		}
 		else {

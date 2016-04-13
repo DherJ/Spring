@@ -22,6 +22,13 @@ public class UserValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"firstName", "field.required", "First name is required"); 
 		FieldError field = errors.getFieldError();
 		System.out.println(field);
+		User u = (User) target;
+		if (u.getAge()<0){
+			errors.rejectValue("age","negativevalue");
+		}
+		if (u.getName()==""){
+			errors.rejectValue("name", "le nom ne peut être vide");
+		}
 		
 	}
 

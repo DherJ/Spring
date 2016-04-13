@@ -18,6 +18,7 @@
 				<tr>
 					<td><form:label path="name">Name</form:label></td>
 					<td><form:input id="name" type="text" path="name" placeholder="insert name..." /></td>
+					<td><form:errors path="name"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="firstName">FirstName</form:label></td>

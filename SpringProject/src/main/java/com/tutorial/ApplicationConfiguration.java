@@ -2,6 +2,7 @@ package com.tutorial;
 
 import javax.sql.DataSource;
 
+
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -20,11 +21,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.tutorial.service.UserService;
 import com.tutorial.service.UserServiceImpl;
 import com.tutorial.validator.UserValidator;
+import com.tutorial.aspect.*;
 
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan({ "com.tutorial.controller", "com.tutorial.service",
-		"com.tutorial.dao", "com.tutorial.validator" })
+		"com.tutorial.dao", "com.tutorial.validator", "com.tutorial.aspect" })
 @MapperScan("com.tutorial.dao")
 public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
@@ -86,5 +88,10 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 		resource.setBasename("classpath:messages");
 		resource.setDefaultEncoding("UTF-8");
 		return resource;
+	}
+	
+	@Bean
+	public LoggingAspect loggingAspect(){
+		return new LoggingAspect();
 	}
 }
