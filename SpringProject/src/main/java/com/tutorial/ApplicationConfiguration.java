@@ -19,11 +19,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.tutorial.service.UserService;
 import com.tutorial.service.UserServiceImpl;
+import com.tutorial.validator.UserValidator;
 
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan({ "com.tutorial.controller", "com.tutorial.service",
-		"com.tutorial.dao" })
+		"com.tutorial.dao", "com.tutorial.validator" })
 @MapperScan("com.tutorial.dao")
 public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
@@ -67,6 +68,10 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 		return sessionFactory.getObject();
 	}
 
+	@Bean
+	public UserValidator userValidator(){
+		return new UserValidator();
+	}
 	@Bean
 	public InternalResourceViewResolver jspViewResolver() {
 		InternalResourceViewResolver bean = new InternalResourceViewResolver();

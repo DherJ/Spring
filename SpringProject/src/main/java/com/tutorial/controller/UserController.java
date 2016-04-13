@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +15,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tutorial.model.User;
 import com.tutorial.service.UserService;
+import com.tutorial.validator.UserValidator;
 
 @Controller
 public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	UserValidator validator;
 
 	@RequestMapping(value = "users", method = RequestMethod.GET)
 	@Transactional(readOnly = true)
@@ -46,12 +51,20 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "addUser", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute("User") User user, ModelMap model) {
+	public String addUser(@ModelAttribute("User") User user, ModelMap model, BindingResult result) {
+		validator.validate(user, result);
+		
+		if (result.hasErrors()){
+			return "index";
+
+		}
+		else {
 		int id = userService.countUsers() + 1;
 		user.setId(id);
 		userService.insertUser(user);
 		System.out.println(user.toString());
 		return "redirect:/users";
+		}
 	}
 
 	@RequestMapping(value = "updateUser", method = RequestMethod.POST)
