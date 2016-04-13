@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -17,13 +18,16 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.tutorial.aspect.UserAspect;
 import com.tutorial.service.UserService;
 import com.tutorial.service.UserServiceImpl;
+import com.tutorial.validateur.ValidateurUser;
 
 @SpringBootApplication
 @EnableAutoConfiguration
+@EnableAspectJAutoProxy
 @ComponentScan({ "com.tutorial.controller", "com.tutorial.service",
-		"com.tutorial.dao" })
+		"com.tutorial.dao", "com.tutorial.validateur", "com.tutorial.aspect" })
 @MapperScan("com.tutorial.dao")
 public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
@@ -57,6 +61,16 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public DataSourceTransactionManager transactionManager(DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
+	}
+
+	@Bean
+	public ValidateurUser validateurUser() {
+		return new ValidateurUser();
+	}
+
+	@Bean
+	public UserAspect userAspect() {
+		return new UserAspect();
 	}
 
 	@Bean

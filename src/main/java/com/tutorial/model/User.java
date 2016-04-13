@@ -2,13 +2,6 @@ package com.tutorial.model;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
-
 public class User implements Serializable {
 
 	/**
@@ -33,8 +26,6 @@ public class User implements Serializable {
 		this.age = age;
 	}
 
-	@NotNull
-	@Length(max = 20)
 	public String getName() {
 		return name;
 	}
@@ -43,8 +34,6 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-	@NotNull
-	@Length(max = 20)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -53,8 +42,6 @@ public class User implements Serializable {
 		this.firstName = firstName;
 	}
 
-	@Min(value = 1)
-	@Max(value = 100)
 	public int getAge() {
 		return age;
 	}
@@ -63,9 +50,6 @@ public class User implements Serializable {
 		this.age = age;
 	}
 
-	@NotNull
-	@Length(max = 20)
-	@Pattern(regexp = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$")
 	public String getEmail() {
 		return email;
 	}
@@ -74,7 +58,6 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	@NotNull
 	public int getId() {
 		return id;
 	}

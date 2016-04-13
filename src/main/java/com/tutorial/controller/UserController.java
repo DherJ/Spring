@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +15,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tutorial.model.User;
 import com.tutorial.service.UserService;
+import com.tutorial.validateur.ValidateurUser;
 
 @Controller
 public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	ValidateurUser validator;
 
 	@RequestMapping(value = "users", method = RequestMethod.GET)
 	@Transactional(readOnly = true)
@@ -41,17 +46,25 @@ public class UserController {
 			user = new User();
 			u_Model.addAttribute("linkSubmit", "addUser");
 		}
-		u_Model.addAttribute("User", user);
+		u_Model.addAttribute("user", user);
 		return "formUser";
 	}
 
 	@RequestMapping(value = "addUser", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute("user") User user, ModelMap model) {
-		int id = userService.countUsers() + 1;
-		user.setId(id);
-		userService.insertUser(user);
-		System.out.println(user.toString());
-		return "redirect:/users";
+	public String addUser(ModelMap model, @ModelAttribute("user") User user,
+			BindingResult result) {
+
+		validator.validate(user, result);
+
+		if (result.hasErrors()) {
+			return "formUser";
+		} else {
+			int id = userService.countUsers() + 1;
+			user.setId(id);
+			userService.insertUser(user);
+			System.out.println(user.toString());
+			return "redirect:/users";
+		}
 	}
 
 	@RequestMapping(value = "updateUser", method = RequestMethod.POST)
