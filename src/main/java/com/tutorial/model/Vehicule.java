@@ -65,6 +65,7 @@ public class Vehicule {
 	public void setId(int id) {
 		this.id = id;
 	}
+<<<<<<< HEAD
 
 	@Override
 	public String toString() {
@@ -72,4 +73,6 @@ public class Vehicule {
 				+ this.getType() + " Constructor : " + this.getConstructor()
 				+ " Name : " + this.getName();
 	}
+=======
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 }

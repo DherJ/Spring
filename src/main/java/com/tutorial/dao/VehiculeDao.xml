@@ -4,32 +4,54 @@
 <mapper namespace="com.tutorial.dao.VehiculeDao">
 
 	<resultMap type="com.tutorial.model.Vehicule" id="Vehicule_ResultMap">
+<<<<<<< HEAD
 		<id property="id_user" column="v_id_user"/>
 		<result property="id" column="v_id"/>
 		<result property="name" column="v_name"/>
 		<result property="type" column="v_type"/>
 		<result property="constructor" column="v_constructor"/>
 		<result property="isLoue" column="v_isLoue"/>
+=======
+		<id property="id_user" column="id_user"/>
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="type" column="type"/>
+		<result property="constructor" column="constructor"/>
+		<result property="isLoue" column="isLoue"/>
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</resultMap>
 
 	<select id="getVehiculeById" resultMap="Vehicule_ResultMap">
 		SELECT *
 		FROM VEHICULE
+<<<<<<< HEAD
 		WHERE v_id = #{v_id}
+=======
+		WHERE id = #{id}
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</select>
 	
 	<select id="getVehiculesByContructor" resultMap="Vehicule_ResultMap">
 		SELECT *
 		FROM VEHICULE
+<<<<<<< HEAD
 		WHERE v_constructor = #{v_constructor}
 		ORDER BY v_id ASC
+=======
+		WHERE constructor = #{constructor}
+		ORDER BY id ASC
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</select>
 		
 	<select id="listVehicules"
 			resultType="com.tutorial.model.Vehicule" resultMap="Vehicule_ResultMap">
 		SELECT *
 		FROM VEHICULE
+<<<<<<< HEAD
 		ORDER BY v_id ASC
+=======
+		ORDER BY id ASC
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</select>
 	
 	<select id="countVehicules" resultType="Integer">
@@ -40,16 +62,32 @@
 	<select id="countVehiculesLoue" resultType="Integer">
 		SELECT COUNT(*)
 		FROM VEHICULE
+<<<<<<< HEAD
 		WHERE v_isLoue=#{v_isLoue}
+=======
+		WHERE isLoue=#{isLoue}
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</select>
 	
 	<insert id="insertVehicule" parameterType="com.tutorial.model.Vehicule">
 		INSERT INTO VEHICULE (
+<<<<<<< HEAD
 			v_type,
 			v_constructor,
 			v_name
 		)
 		VALUES (
+=======
+			id,
+			id_user,
+			type,
+			constructor,
+			name
+		)
+		VALUES (
+			#{vehicule.id},
+			#{vehicule.id_user},
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 			#{vehicule.type},
 			#{vehicule.constructor},
 			#{vehicule.name}
@@ -59,13 +97,22 @@
 	<update id="updateVehicule"
 			parameterType="com.tutorial.model.Vehicule">
 		UPDATE USERTABLE
+<<<<<<< HEAD
 		SET	v_id_user = #{vehicule.id_user}, v_type = #{vehicule.type}, v_constructor = #{vehicule.constructor}, v_name = #{vehicule.name}
 		WHERE v_id = #{vehicule.id}
+=======
+		SET	id_user = #{vehicule.id_user}, type = #{vehicule.type}, constructor = #{vehicule.constructor}, name = #{vehicule.name}
+		WHERE id = #{vehicule.id}
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</update>
 	
 	<delete id="deleteVehicule" parameterType="int">
 		DELETE FROM VEHICULE
+<<<<<<< HEAD
 		WHERE v_id = #{v_id}
+=======
+		WHERE id = #{id}
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</delete>
 
 </mapper>

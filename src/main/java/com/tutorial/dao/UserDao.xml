@@ -4,6 +4,7 @@
 <mapper namespace="com.tutorial.dao.UserDao">
 
 	<resultMap type="com.tutorial.model.User" id="User_ResultMap">
+<<<<<<< HEAD
 		<id property="id" column="user_id"/>
 		<result property="name" column="user_name"/>
 		<result property="firstName" column="user_firstname"/>
@@ -35,6 +36,53 @@
 			user_age
 		FROM USERTABLE
 		ORDER BY user_id ASC
+=======
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="firstName" column="firstname"/>
+		<result property="email" column="email"/>
+		<result property="age" column="age"/>
+	</resultMap>
+	
+	<resultMap type="com.tutorial.model.LoginBean" id="login_ResultMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="firstName" column="firstname"/>
+		<result property="email" column="email"/>
+		<result property="age" column="age"/>
+	</resultMap>
+
+	<select id="getUserById" resultMap="User_ResultMap">
+		SELECT id, name, firstname, email, age
+		FROM USERTABLE
+		WHERE id = #{id}
+	</select>
+	
+	<select id="getUsersByName" resultMap="User_ResultMap">
+		SELECT id, name, firstname, email, age
+		FROM USERTABLE
+		WHERE name = #{name}
+		ORDER BY id ASC
+	</select>
+	
+	<select id="isLoginValid" resultMap="login_ResultMap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM LOGIN
+		WHERE identifiant = #{identifiant} AND pass = #{pass}
+	</select>
+	
+	
+	<select id="listUsers"
+			resultType="com.tutorial.model.User" resultMap="User_ResultMap">
+		SELECT
+			id,
+			name,
+			firstname,
+			email,
+			age
+		FROM USERTABLE
+		ORDER BY id ASC
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</select>
 	
 	<select id="countUsers" resultType="Integer">
@@ -44,11 +92,19 @@
 	
 	<insert id="insertUser" parameterType="com.tutorial.model.User">
 		INSERT INTO USERTABLE (
+<<<<<<< HEAD
 			user_id,
 			user_name,
 			user_firstname,
 			user_email,
 			user_age
+=======
+			id,
+			name,
+			firstname,
+			email,
+			age
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 		)
 		VALUES (
 			#{user.id},
@@ -62,13 +118,22 @@
 	<update id="updateUser"
 			parameterType="com.tutorial.model.User">
 		UPDATE USERTABLE
+<<<<<<< HEAD
 		SET	user_name = #{user.name}, user_firstname = #{user.firstName}, user_email = #{user.email}, user_age = #{user.age}
 		WHERE user_id = #{user.id}
+=======
+		SET	name = #{user.name}, firstname = #{user.firstName}, email = #{user.email}, age = #{user.age}
+		WHERE id = #{user.id}
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</update>
 	
 	<delete id="deleteUser" parameterType="int">
 		DELETE FROM USERTABLE
+<<<<<<< HEAD
 		WHERE user_id = #{user_id}
+=======
+		WHERE id = #{id}
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 	</delete>
 
 </mapper>

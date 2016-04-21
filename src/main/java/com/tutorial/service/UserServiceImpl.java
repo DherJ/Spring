@@ -37,4 +37,15 @@ public class UserServiceImpl implements UserService {
 	public int countUsers() {
 		return userDao.countUsers();
 	}
+<<<<<<< HEAD
+=======
+
+	public List<User> getUsersByName(String name) {
+		return userDao.getUsersByName(name);
+	}
+
+	public int isLoginValid(String identifiant, String pass) {
+		return userDao.isLoginValid(identifiant, pass);
+	}
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 }

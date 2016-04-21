@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//src/main/java/com/tutorial/ApplicationConfiguration.java=UTF-8
+=======
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 encoding//src/main/webapp/WEB-INF/jsp/formSearchUsers.jsp=UTF-8

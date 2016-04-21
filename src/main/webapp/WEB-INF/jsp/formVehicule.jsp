@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -7,6 +8,29 @@
 		<form:form method="post" action="${pageContext.request.contextPath}/vehicules/${linkSubmit}" modelAttribute="vehicule">
 			<h2>Vehicule form</h2>
 			<table class="center">
+=======
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Saisie User</title>
+		<link href="/resources/css/form.css" rel="stylesheet" type="text/css"/>
+		<style>
+			.error {
+			    color: #ff0000;
+			    font-style: italic;
+			    font-weight: bold;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<form:form method="post" action="${pageContext.request.contextPath}/${linkSubmit}" modelAttribute="vehicule">
+			<h2>Vehicule informations</h2>
+			<table align="center">
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 				<tr>
 					<td> <form:hidden path="id" /> </td>
 				</tr>
@@ -28,6 +52,7 @@
 			</table>
 			<button type="reset" value="Reset">Reset</button>
 			<button type="submit" value="${linkSubmit}">Submit</button>
+<<<<<<< HEAD
 		</form:form> --%>
 		
 		<div class="portlet box green">
@@ -77,3 +102,8 @@
                                             </div>
                                         </div>
                                         <script>ajaxInitFormVehicule();</script>
+=======
+		</form:form>
+	</body>
+</html>
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53

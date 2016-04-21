@@ -14,7 +14,10 @@ public class User implements Serializable {
 	private String firstName;
 	private String email;
 	private int age;
+<<<<<<< HEAD
 	private String pass;
+=======
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 
 	public User() {
 	}
@@ -72,6 +75,7 @@ public class User implements Serializable {
 		return " User : id : " + id + " name : " + name + " firstName : "
 				+ firstName + " email : " + email + " age : " + age;
 	}
+<<<<<<< HEAD
 
 	public String getPass() {
 		return pass;
@@ -80,4 +84,6 @@ public class User implements Serializable {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+=======
+>>>>>>> 50fb9fab214182f04fabbeb51ed94f34c9625d53
 }
