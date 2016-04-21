@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tutorial.dao.VehiculeDao">
+
+	<resultMap type="com.tutorial.model.Vehicule" id="Vehicule_ResultMap">
+		<id property="id_user" column="id_user"/>
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="type" column="type"/>
+		<result property="constructor" column="constructor"/>
+		<result property="isLoue" column="isLoue"/>
+	</resultMap>
+
+	<select id="getVehiculeById" resultMap="Vehicule_ResultMap">
+		SELECT *
+		FROM VEHICULE
+		WHERE id = #{id}
+	</select>
+	
+	<select id="getVehiculesByContructor" resultMap="Vehicule_ResultMap">
+		SELECT *
+		FROM VEHICULE
+		WHERE constructor = #{constructor}
+		ORDER BY id ASC
+	</select>
+		
+	<select id="listVehicules"
+			resultType="com.tutorial.model.Vehicule" resultMap="Vehicule_ResultMap">
+		SELECT *
+		FROM VEHICULE
+		ORDER BY id ASC
+	</select>
+	
+	<select id="countVehicules" resultType="Integer">
+		SELECT COUNT(*)
+		FROM VEHICULE
+	</select>
+	
+	<select id="countVehiculesLoue" resultType="Integer">
+		SELECT COUNT(*)
+		FROM VEHICULE
+		WHERE isLoue=#{isLoue}
+	</select>
+	
+	<insert id="insertVehicule" parameterType="com.tutorial.model.Vehicule">
+		INSERT INTO VEHICULE (
+			id,
+			id_user,
+			type,
+			constructor,
+			name
+		)
+		VALUES (
+			#{vehicule.id},
+			#{vehicule.id_user},
+			#{vehicule.type},
+			#{vehicule.constructor},
+			#{vehicule.name}
+		)
+	</insert>
+	
+	<update id="updateVehicule"
+			parameterType="com.tutorial.model.Vehicule">
+		UPDATE USERTABLE
+		SET	id_user = #{vehicule.id_user}, type = #{vehicule.type}, constructor = #{vehicule.constructor}, name = #{vehicule.name}
+		WHERE id = #{vehicule.id}
+	</update>
+	
+	<delete id="deleteVehicule" parameterType="int">
+		DELETE FROM VEHICULE
+		WHERE id = #{id}
+	</delete>
+
+</mapper>

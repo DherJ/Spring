@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tutorial.dao.AdresseDao">
+
+	<resultMap type="com.tutorial.model.Adresse" id="Adresse_ResultMap">
+		<id property="id" column="id"/>
+		<result property="numero" column="numero"/>
+		<result property="ville" column="ville"/>
+		<result property="codePostal" column="codePostal"/>
+	</resultMap>
+
+	<select id="getAdresseByUserId" resultMap="Adresse_ResultMap">
+		SELECT *
+		FROM ADRESSE
+		WHERE adr_id = #{user_id_adr}
+	</select>
+	
+	
+	<select id="countAdresses" resultType="Integer">
+		SELECT COUNT(*)
+		FROM ADRESSE
+	</select>
+	
+	<insert id="insertAdresse" parameterType="com.tutorial.model.Adresse">
+		INSERT INTO ADRESSE (
+			adr_id,
+			adr_numero,
+			adr_ville,
+			adr_code_postal,
+		)
+		VALUES (
+			#{adresse.id},
+			#{adresse.numero},
+			#{adresse.ville},
+			#{adresse.codePostal},
+		)
+	</insert>
+	
+	<update id="updateAdresse"
+			parameterType="com.tutorial.model.Adresse">
+		UPDATE ADRESSE
+		SET	adr_numero = #{adresse.numero}, adr_ville = #{adresse.ville}, adr_codePostal = #{adresse.codePostal}
+		WHERE adr_id = #{adresse.id}
+	</update>
+	
+	<delete id="deleteAdresse" parameterType="int">
+		DELETE FROM ADRESSE
+		WHERE adr_id = #{adr_id}
+	</delete>
+
+</mapper>
